@@ -32,6 +32,7 @@ import org.exoplatform.portal.webui.service.AddOnService;
 import org.exoplatform.portal.webui.util.PortalDataMapper;
 import org.exoplatform.webui.config.annotation.ComponentConfig;
 import org.exoplatform.webui.config.annotation.EventConfig;
+import org.exoplatform.webui.core.UIComponent;
 
 @ComponentConfig(events = { @EventConfig(listeners = UIContainerActionListener.EditContainerActionListener.class),
         @EventConfig(listeners = DeleteComponentActionListener.class, confirm = "UIContainer.deleteContainer") })
@@ -39,20 +40,26 @@ public class UIAddOnContainer extends UIContainer {
 
     public static final String ADDON_CONTAINER = "addonContainer";
 
-    public UIAddOnContainer() {
-        ExoContainer container = ExoContainerContext.getCurrentContainer();
-        AddOnService service = (AddOnService)container.getComponentInstanceOfType(AddOnService.class);
+    private boolean initialized = false;
 
-        List<Application<?>> apps = service.getApplications(this.getId());
-        Container model = new Container();
-        model.setChildren(new ArrayList<ModelObject>(apps));
-        try {
-            UIContainer tmp = new UIContainer();
-            PortalDataMapper.toUIContainer(tmp, model);
-            this.setChildren(tmp.getChildren());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+    @Override
+    public List<UIComponent> getChildren() {
+        if (!initialized) {
+            ExoContainer container = ExoContainerContext.getCurrentContainer();
+            AddOnService service = (AddOnService)container.getComponentInstanceOfType(AddOnService.class);
+
+            List<Application<?>> apps = service.getApplications(this.getName());
+            Container model = new Container();
+            model.setChildren(new ArrayList<ModelObject>(apps));
+            try {
+                UIContainer tmp = new UIContainer();
+                PortalDataMapper.toUIContainer(tmp, model);
+                this.setChildren(tmp.getChildren());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+            initialized = true;
         }
+        return super.getChildren();
     }
-
 }

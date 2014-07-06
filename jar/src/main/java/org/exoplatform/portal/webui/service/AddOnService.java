@@ -27,5 +27,5 @@ public interface AddOnService {
 
     void addPlugin(AddOnPlugin plugin);
 
-    List<Application<?>> getApplications(String containerId);
+    List<Application<?>> getApplications(String containerName);
 }

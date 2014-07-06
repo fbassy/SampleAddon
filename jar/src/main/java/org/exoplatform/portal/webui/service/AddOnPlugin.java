@@ -26,7 +26,7 @@ import org.exoplatform.portal.config.model.Application;
 
 public abstract class AddOnPlugin extends BaseComponentPlugin {
 
-    public abstract String getContainerId();
+    public abstract String getContainerName();
 
     public abstract  List<Application<?>> getApplications();
 

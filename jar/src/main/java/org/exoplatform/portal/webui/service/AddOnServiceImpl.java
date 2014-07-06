@@ -33,10 +33,10 @@ public class AddOnServiceImpl implements AddOnService {
     private Map<String, List<AddOnPlugin>> plugins = new HashMap<String, List<AddOnPlugin>>();
 
     @Override
-    public List<Application<?>> getApplications(String containerId) {
+    public List<Application<?>> getApplications(String containerName) {
         List<Application<?>> apps = new LinkedList<Application<?>>();
 
-        List<AddOnPlugin> ls = plugins.get(containerId);
+        List<AddOnPlugin> ls = plugins.get(containerName);
         if (ls != null) {
             for (AddOnPlugin p : ls) {
                 apps.addAll(p.getApplications());
@@ -47,10 +47,10 @@ public class AddOnServiceImpl implements AddOnService {
 
     @Override
     public void addPlugin(AddOnPlugin plugin) {
-        List<AddOnPlugin> ls = plugins.get(plugin.getContainerId());
+        List<AddOnPlugin> ls = plugins.get(plugin.getContainerName());
         if (ls == null) {
             ls = new LinkedList<AddOnPlugin>();
-            plugins.put(plugin.getContainerId(), ls);
+            plugins.put(plugin.getContainerName(), ls);
         }
         ls.add(plugin);
         Collections.sort(ls, new Comparator<AddOnPlugin>() {

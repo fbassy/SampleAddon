@@ -7,7 +7,7 @@
   <portlet>
     <portlet-name>helloAddOn</portlet-name>
     <portlet-class>
-      org.jboss.portal.portlet.samples.SimplestHelloWorldPortlet
+      org.vstorm83.exo.portlet.sample.SimplestAddOnPortlet
     </portlet-class>
     <supports>
       <mime-type>text/html</mime-type>

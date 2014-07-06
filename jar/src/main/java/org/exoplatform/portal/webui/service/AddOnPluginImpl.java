@@ -29,15 +29,15 @@ import org.exoplatform.portal.config.model.Application;
 
 public class AddOnPluginImpl extends AddOnPlugin {
 
-    private String containerId;
+    private String containerName;
     private List<Application<?>> apps = new LinkedList<Application<?>>();
     private int priority;
 
     public AddOnPluginImpl(InitParams params) {
         if (params != null) {
-            ValueParam containerParam = params.getValueParam("containerId");
+            ValueParam containerParam = params.getValueParam("containerName");
             if (containerParam != null) {
-                containerId = containerParam.getValue();
+                containerName = containerParam.getValue();
             }
 
             ValueParam priorityParam = params.getValueParam("priority");
@@ -63,8 +63,8 @@ public class AddOnPluginImpl extends AddOnPlugin {
     }
 
     @Override
-    public String getContainerId() {
-        return containerId;
+    public String getContainerName() {
+        return containerName;
     }
 
 }
