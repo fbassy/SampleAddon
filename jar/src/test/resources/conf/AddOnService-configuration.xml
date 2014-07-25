@@ -51,9 +51,40 @@
               	<field name="contentId">
               		<string>SampleAddOn/helloAddOn</string>
               	</field>
+              	<!-- portlet preference comes with name, values separated by semicolon -->
+              	<field name="contentState">
+              		<string>name1=value1,value11;name2=value2;name3=value3</string>
+              	</field>
               </object>
-            </field>
-          </object>
+            </field>	
+	            <field name="title">
+	           		<string>testTitle</string>
+	           	</field>
+	            <field name="icon">
+	           		<string>testIcon</string>
+	           	</field>
+	           	<field name="description">
+	           		<string>testDesc</string>
+	           	</field>
+	           	<field name="width">
+	           		<string>10</string>
+	           	</field>  	
+	           	<field name="height">
+	           		<string>10</string>
+	           	</field>
+	           	<field name="showInfoBar">
+	           		<boolean>true</boolean>
+	           	</field>
+	           	<field name="showApplicationState">
+	           		<boolean>true</boolean>
+	           	</field>
+	           	<field name="showApplicationMode">
+	           		<boolean>true</boolean>
+	           	</field>
+	           	<field name="theme">
+	           		<string>simple</string>
+	           	</field>           	             	
+	          </object>
         </object-param>
       </init-params>
     </component-plugin>
