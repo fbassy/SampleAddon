@@ -39,63 +39,69 @@ import org.exoplatform.webui.core.UIComponent;
 import org.exoplatform.webui.event.Event;
 import org.exoplatform.webui.event.EventListener;
 
-@ComponentConfig(events = { @EventConfig(listeners = UIAddOnContainer.EditContainerActionListener.class),
-        @EventConfig(listeners = DeleteComponentActionListener.class, confirm = "UIContainer.deleteContainer") })
+@ComponentConfig(events = {
+    @EventConfig(listeners = UIAddOnContainer.EditContainerActionListener.class),
+    @EventConfig(listeners = DeleteComponentActionListener.class, confirm = "UIContainer.deleteContainer") })
 public class UIAddOnContainer extends UIContainer {
 
-    public static final String ADDON_CONTAINER = "addonContainer";
+  public static final String ADDON_CONTAINER = "addonContainer";
 
-    private boolean initialized = false;
+  private boolean            initialized     = false;
 
-    @Override
-    public List<UIComponent> getChildren() {
-        if (!initialized) {
-            ExoContainer container = ExoContainerContext.getCurrentContainer();
-            AddOnService service = (AddOnService)container.getComponentInstanceOfType(AddOnService.class);
+  @Override
+  public List<UIComponent> getChildren() {
+    if (!initialized) {
+      ExoContainer container = ExoContainerContext.getCurrentContainer();
+      AddOnService service = (AddOnService) container.getComponentInstanceOfType(AddOnService.class);
 
-            List<Application<?>> apps = service.getApplications(this.getName());
-            Container model = new Container();
-            model.setChildren(new ArrayList<ModelObject>(apps));
-            try {
-                UIContainer tmp = new UIContainer();
-                PortalDataMapper.toUIContainer(tmp, model);
-                this.setChildren(tmp.getChildren());
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-            initialized = true;
+      List<Application<?>> apps = service.getApplications(this.getName());
+      Container model = new Container();
+      model.setChildren(new ArrayList<ModelObject>(apps));
+      try {
+        UIContainer tmp = new UIContainer();
+        PortalDataMapper.toUIContainer(tmp, model);
+        for (UIComponent comp : tmp.getChildren()) {
+          comp.setParent(this);
         }
-        return super.getChildren();
+        this.setChildren(tmp.getChildren());
+      } catch (Exception e) {
+        throw new RuntimeException(e);
+      }
+      initialized = true;
     }
+    return super.getChildren();
+  }
 
-    @Override
-    public ModelObject buildModelObject() {
-        Container model = new Container(getStorageId());
-        model.setId(getId());
-        model.setName(getName());
-        model.setTitle(getTitle());
-        model.setIcon(getIcon());
-        model.setDescription(getDescription());
-        model.setHeight(getHeight());
-        model.setWidth(getWidth());
-        model.setTemplate(getTemplate());
-        model.setFactoryId(getFactoryId());
-        model.setAccessPermissions(getAccessPermissions());
-        //Don't build children, we don't save them to database
-        return model;
-    }
-    
-    public static class EditContainerActionListener extends EventListener<UIContainer> {
-        public void execute(Event<UIContainer> event) throws Exception {
+  @Override
+  public ModelObject buildModelObject() {
+    Container model = new Container(getStorageId());
+    model.setId(getId());
+    model.setName(getName());
+    model.setTitle(getTitle());
+    model.setIcon(getIcon());
+    model.setDescription(getDescription());
+    model.setHeight(getHeight());
+    model.setWidth(getWidth());
+    model.setTemplate(getTemplate());
+    model.setFactoryId(getFactoryId());
+    model.setAccessPermissions(getAccessPermissions());
+    // Don't build children, we don't save them to database
+    return model;
+  }
 
-            UIContainer uiContainer = event.getSource();
-            UIPortalApplication uiApp = Util.getUIPortalApplication();
-            UIMaskWorkspace uiMaskWS = uiApp.getChildById(UIPortalApplication.UI_MASK_WS_ID);
-            UIContainerForm containerForm = uiMaskWS.createUIComponent(UIAddOnContainerForm.class, "UIContainerForm", "UIContainerForm");
-            containerForm.setValues(uiContainer);
-            uiMaskWS.setUIComponent(containerForm);
-            uiMaskWS.setShow(true);
-            event.getRequestContext().addUIComponentToUpdateByAjax(uiMaskWS);
-        }
+  public static class EditContainerActionListener extends EventListener<UIContainer> {
+    public void execute(Event<UIContainer> event) throws Exception {
+
+      UIContainer uiContainer = event.getSource();
+      UIPortalApplication uiApp = Util.getUIPortalApplication();
+      UIMaskWorkspace uiMaskWS = uiApp.getChildById(UIPortalApplication.UI_MASK_WS_ID);
+      UIContainerForm containerForm = uiMaskWS.createUIComponent(UIAddOnContainerForm.class,
+                                                                 "UIContainerForm",
+                                                                 "UIContainerForm");
+      containerForm.setValues(uiContainer);
+      uiMaskWS.setUIComponent(containerForm);
+      uiMaskWS.setShow(true);
+      event.getRequestContext().addUIComponentToUpdateByAjax(uiMaskWS);
     }
+  }
 }
