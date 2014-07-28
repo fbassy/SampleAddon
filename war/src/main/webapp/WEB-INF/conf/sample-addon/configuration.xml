@@ -44,19 +44,24 @@
         <object-param>
           <name>helloAddOn</name>
           <description>sample helloAddOn portlet</description>
-          <object type="org.exoplatform.portal.config.serialize.PortletApplication">
-            <field name="state">
-              <object type="org.exoplatform.portal.config.model.TransientApplicationState">
-              	<field name="contentId">
-              		<string>SampleAddOn/helloAddOn</string>
-              	</field>
-              	<!-- portlet preference comes with name, values separated by semicolon -->
-              	<field name="contentState">
-              		<string>name1=value1,value11;name2=value2;name3=value3</string>
-              	</field>
-              </object>
-            </field>
-            <!-- optional configuration
+          <object type="org.exoplatform.portal.webui.service.PortletModel">
+            <field name="contentId">
+           		<string>SampleAddOn/helloAddOn</string>
+           	</field>
+           	<!-- optional settings
+            <field name="portletPrefs">
+              <map type="java.util.HashMap">
+				     <entry>
+				     	<key><string>test1</string></key>
+				     	<value><string>value1</string></value>
+				     </entry>
+				  </map>
+            </field>	
+           	<field name="permissions">
+           	  <collection type="java.util.ArrayList">
+           	    <value><string>*:/platform/administrators</string></value>
+           	  </collection>
+           	</field>
             <field name="title">
            		<string>testTitle</string>
            	</field>
@@ -83,9 +88,9 @@
            	</field>
            	<field name="theme">
            		<string>simple</string>
-           	</field>           	  
-           	 -->           	
-          </object>
+           	</field>
+           	 -->
+	       </object>
         </object-param>
       </init-params>
     </component-plugin>

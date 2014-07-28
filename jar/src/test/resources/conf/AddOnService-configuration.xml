@@ -19,8 +19,8 @@
   -->
 
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-               xsi:schemaLocation="http://www.exoplaform.org/xml/ns/kernel_1_2.xsd http://www.exoplaform.org/xml/ns/kernel_1_2.xsd"
-               xmlns="http://www.exoplaform.org/xml/ns/kernel_1_2.xsd">
+               xsi:schemaLocation="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd http://www.exoplatform.org/xml/ns/kernel_1_2.xsd"
+               xmlns="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd">
   <component>
     <key>org.exoplatform.portal.webui.service.AddOnService</key>
     <type>org.exoplatform.portal.webui.service.AddOnServiceImpl</type>
@@ -45,46 +45,51 @@
         <object-param>
           <name>helloAddOn</name>
           <description>sample helloAddOn portlet</description>
-          <object type="org.exoplatform.portal.config.serialize.PortletApplication">
-            <field name="state">
-              <object type="org.exoplatform.portal.config.model.TransientApplicationState">
-              	<field name="contentId">
-              		<string>SampleAddOn/helloAddOn</string>
-              	</field>
-              	<!-- portlet preference comes with name, values separated by semicolon -->
-              	<field name="contentState">
-              		<string>name1=value1,value11;name2=value2;name3=value3</string>
-              	</field>
-              </object>
+          <object type="org.exoplatform.portal.webui.service.PortletModel">
+            <field name="contentId">
+           		<string>SampleAddOn/helloAddOn</string>
+           	</field>
+            <field name="portletPrefs">
+              <map type="java.util.HashMap">
+				     <entry>
+				     	<key><string>test1</string></key>
+				     	<value><string>value1</string></value>
+				     </entry>
+				  </map>
             </field>	
-	            <field name="title">
-	           		<string>testTitle</string>
-	           	</field>
-	            <field name="icon">
-	           		<string>testIcon</string>
-	           	</field>
-	           	<field name="description">
-	           		<string>testDesc</string>
-	           	</field>
-	           	<field name="width">
-	           		<string>10</string>
-	           	</field>  	
-	           	<field name="height">
-	           		<string>10</string>
-	           	</field>
-	           	<field name="showInfoBar">
-	           		<boolean>true</boolean>
-	           	</field>
-	           	<field name="showApplicationState">
-	           		<boolean>true</boolean>
-	           	</field>
-	           	<field name="showApplicationMode">
-	           		<boolean>true</boolean>
-	           	</field>
-	           	<field name="theme">
-	           		<string>simple</string>
-	           	</field>           	             	
-	          </object>
+           	<field name="permissions">
+           	  <collection type="java.util.ArrayList">
+           	    <value><string>*:/platform/administrators</string></value>
+           	  </collection>
+           	</field>
+            <field name="title">
+           		<string>testTitle</string>
+           	</field>
+            <field name="icon">
+           		<string>testIcon</string>
+           	</field>
+           	<field name="description">
+           		<string>testDesc</string>
+           	</field>
+           	<field name="width">
+           		<string>10</string>
+           	</field>  	
+           	<field name="height">
+           		<string>10</string>
+           	</field>
+           	<field name="showInfoBar">
+           		<boolean>true</boolean>
+           	</field>
+           	<field name="showApplicationState">
+           		<boolean>true</boolean>
+           	</field>
+           	<field name="showApplicationMode">
+           		<boolean>true</boolean>
+           	</field>
+           	<field name="theme">
+           		<string>simple</string>
+           	</field>
+	       </object>
         </object-param>
       </init-params>
     </component-plugin>
