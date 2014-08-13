@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
 
     Copyright (C) 2009 eXo Platform SAS.
@@ -18,35 +19,15 @@
     02110-1301 USA, or see the FSF site: http://www.fsf.org.
 
 -->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>addons-parent-pom</artifactId>
-    <groupId>org.exoplatform.addons</groupId>
-    <version>3</version>
-    <relativePath />
+    <artifactId>sampleAddon-extension</artifactId>
+    <groupId>org.exoplatform.addons.sampleAddon</groupId>
+    <version>1.0.x-SNAPSHOT</version>
   </parent>
-  <groupId>org.exoplatform.addons.sampleAddon</groupId>
-  <artifactId>sampleAddon-extension</artifactId>
-  <name>eXo Addons - Sample</name>
-  <version>1.0.x-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <description>Sample addon</description>
-
-   <dependencyManagement>
-  <dependencies>
-    <dependency>
-      <groupId>javax.portlet</groupId>
-      <artifactId>portlet-api</artifactId>
-      <version>2.0</version>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
-   </dependencyManagement>
-
-  <modules>
-    <module>sampleAddon-extension-config</module>
-    <module>sampleAddon-extension-webapp</module>
-  </modules>
+  <artifactId>sampleAddon-extension-config</artifactId>
+  <packaging>jar</packaging>
+  <name>eXo Addons - Sample Extension Configuration</name>
+  <description>eXo Sample Extension Configuration</description>
 </project>
