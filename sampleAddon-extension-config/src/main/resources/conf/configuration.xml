@@ -36,6 +36,10 @@
                 </value>
               </collection>
             </field>
+            <!-- The name of the target dependency -->
+            <!--<field name="target">-->
+              <!--<string>welcome-screens</string>-->
+            <!--</field>-->
           </object>
         </object-param>
       </init-params>

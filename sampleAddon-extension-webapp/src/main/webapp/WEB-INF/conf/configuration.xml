@@ -44,11 +44,16 @@
         <object-param>
           <name>helloAddOn</name>
           <description>sample helloAddOn portlet</description>
-          <object type="org.exoplatform.portal.webui.service.PortletModel">
-            <field name="contentId">
-              <string>sampleAddOn/helloAddOn</string>
+          <object type="org.exoplatform.portal.config.serialize.PortletApplication">
+            <field name="state">
+              <object type="org.exoplatform.portal.config.model.TransientApplicationState">
+                <field name="contentId">
+                  <string>sampleAddOn/helloAddOn</string>
+                </field>
+              </object>
             </field>
           </object>
+
         </object-param>
       </init-params>
     </component-plugin>
