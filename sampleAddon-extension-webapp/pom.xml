@@ -41,7 +41,7 @@
   </dependencies>
 
   <build>
-    <finalName>SampleAddOn</finalName>
+    <finalName>sampleAddOn</finalName>
   </build>
 
 </project>

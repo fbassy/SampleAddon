@@ -32,7 +32,7 @@
             <field name="dependencies">
               <collection type="java.util.ArrayList">
                 <value>
-                  <string>SampleAddOn</string>
+                  <string>sampleAddOn</string>
                 </value>
               </collection>
             </field>

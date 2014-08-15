@@ -1,4 +1,4 @@
 
 				  <div>
-								uicomponent.renderChildren();
+							<%	uicomponent.renderChildren(); %>
 					</div>
