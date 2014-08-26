@@ -12,9 +12,9 @@
 	http://www.fsf.org. -->
 
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.exoplaform.org/xml/ns/kernel_1_2.xsd http://www.exoplaform.org/xml/ns/kernel_1_2.xsd"
-	xmlns="http://www.exoplaform.org/xml/ns/kernel_1_2.xsd">
-	<external-component-plugins>
+               xsi:schemaLocation="http://www.exoplaform.org/xml/ns/kernel_1_2.xsd http://www.exoplaform.org/xml/ns/kernel_1_2.xsd"
+               xmlns="http://www.exoplaform.org/xml/ns/kernel_1_2.xsd">
+  <external-component-plugins>
     <!-- The full qualified name of the PortalContainerConfig -->
     <target-component>org.exoplatform.container.definition.PortalContainerConfig</target-component>
     <component-plugin>
@@ -36,10 +36,6 @@
                 </value>
               </collection>
             </field>
-            <!-- The name of the target dependency -->
-            <!--<field name="target">-->
-              <!--<string>welcome-screens</string>-->
-            <!--</field>-->
           </object>
         </object-param>
       </init-params>

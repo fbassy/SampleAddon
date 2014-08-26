@@ -27,9 +27,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class SimplestAddOnPortlet extends GenericPortlet {
-    public void doView(RenderRequest request, RenderResponse response) throws IOException {
-        PrintWriter writer = response.getWriter();
-        writer.write("Hello eXo Tribe!");
-        writer.close();
-    }
+  public void doView(RenderRequest request, RenderResponse response) throws IOException {
+    PrintWriter writer = response.getWriter();
+    writer.write("Hello eXo Tribe!");
+    writer.close();
+  }
 }
