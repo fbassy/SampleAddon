@@ -44,16 +44,58 @@
         <object-param>
           <name>helloAddOn</name>
           <description>sample helloAddOn portlet</description>
-          <object type="org.exoplatform.portal.config.serialize.PortletApplication">
-            <field name="state">
-              <object type="org.exoplatform.portal.config.model.TransientApplicationState">
-                <field name="contentId">
-                  <string>sampleAddOn/helloAddOn</string>
-                </field>
-              </object>
+          <object type="org.exoplatform.commons.addons.PortletModel">
+            <field name="contentId">
+              <string>sampleAddOn/helloAddOn</string>
             </field>
+            <!--The following values are optionals-->
+            <!--<field name="portletPrefs">-->
+              <!--<map type="java.util.HashMap">-->
+                <!--<entry>-->
+                  <!--<key>-->
+                    <!--<string>pref1</string>-->
+                  <!--</key>-->
+                  <!--<value>-->
+                    <!--<string>value1</string>-->
+                  <!--</value>-->
+                <!--</entry>-->
+              <!--</map>-->
+            <!--</field>-->
+            <!--<field name="permissions">-->
+              <!--<collection type="java.util.ArrayList">-->
+                <!--<value>-->
+                  <!--<string>*:/platform/users</string>-->
+                <!--</value>-->
+              <!--</collection>-->
+            <!--</field>-->
+            <!--<field name="title">-->
+              <!--<string>Sample Addon</string>-->
+            <!--</field>-->
+            <!--<field name="icon">-->
+              <!--<string>testIcon</string>-->
+            <!--</field>-->
+            <!--<field name="description">-->
+              <!--<string>This is a sample addon</string>-->
+            <!--</field>-->
+            <!--<field name="width">-->
+              <!--<string>200</string>-->
+            <!--</field>-->
+            <!--<field name="height">-->
+              <!--<string>10</string>-->
+            <!--</field>-->
+            <!--<field name="showInfoBar">-->
+              <!--<boolean>true</boolean>-->
+            <!--</field>-->
+            <!--<field name="showApplicationState">-->
+              <!--<boolean>true</boolean>-->
+            <!--</field>-->
+            <!--<field name="showApplicationMode">-->
+              <!--<boolean>true</boolean>-->
+            <!--</field>-->
+            <!--<field name="theme">-->
+              <!--<string>simple</string>-->
+            <!--</field>-->
           </object>
-
         </object-param>
       </init-params>
     </component-plugin>
